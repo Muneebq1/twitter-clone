@@ -1,24 +1,46 @@
 import mongoose from 'mongoose';
 
-let productSchema = new mongoose.Schema({
-    name: { type: String, required: true },
-    price: Number,
-    description: String,
-    owner: { type: mongoose.ObjectId, required: true },
-    isDeleted: { typeof: Boolean, default: false },
+let tweetSchema = new mongoose.Schema({
+    text: { type: String, required: true },
+    owner: { type: mongoose.ObjectId, ref: "Users", required: true },
+
+    // ownerName: String,
+    // profilePhoto: String,
+
+    image: { type: String },
+    // likes: [{ type: mongoose.ObjectId }],
+    // comments: [{
+    //     user: { type: mongoose.ObjectId },
+    //     commentText: String
+    // }],
+    // impression: Number,
+    // views: Number,
+    // tags: [],
+    isDeleted: { type: Boolean, default: false },
     createdOn: { type: Date, default: Date.now }
 });
-export const productModel = mongoose.model('products', productSchema);
+export const tweetModel = mongoose.model('tweets', tweetSchema);
 
 const userSchema = new mongoose.Schema({
     firstName: { type: String },
     lastName: { type: String },
     email: { type: String, required: true },
     password: { type: String, required: true },
+    isActive: { type: Boolean, default: true},
+    // following: [{ type: mongoose.ObjectId }, ref: "Users"],
+    // followers: [{ type: mongoose.ObjectId }, ref: "Users"],
 
     createdOn: { type: Date, default: Date.now },
 });
 export const userModel = mongoose.model('Users', userSchema);
+
+const otpSchema = new mongoose.Schema({
+    otp: String,
+    email: String,
+    isUsed: { type: Boolean, default: false },
+    createdOn: { type: Date, default: Date.now },
+});
+export const otpModel = mongoose.model('Opts', otpSchema);
 
 
 const mongodbURI = process.env.mongodbURI || "mongodb+srv://muneeb:whyitellyou@cluster0.yqmvs2t.mongodb.net/firstdb?retryWrites=true&w=majority";

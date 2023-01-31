@@ -6,10 +6,11 @@ import { Routes, Route, Link, Navigate } from "react-router-dom";
 import loaderImg from './img/loading.webp'
 
 import Home from "./components/home";
-import About from "./components/about";
-import Gallery from "./components/gallery";
+import Profile from "./components/profile";
 import Login from "./components/login";
 import Signup from "./components/signup";
+import ChangePassword from "./components/changePassword";
+import ForgetPassword from "./components/forgetPassword";
 
 
 function App() {
@@ -67,9 +68,6 @@ function App() {
           type: 'USER_LOGOUT'
         })
       }
-
-
-
     }
     getProfile();
 
@@ -80,6 +78,7 @@ function App() {
     // Add a request interceptor
     axios.interceptors.request.use(function (config) {
       // Do something before request is sent
+      console.log("interceptor");
       config.withCredentials = true;
       return config;
     }, function (error) {
@@ -113,8 +112,6 @@ function App() {
           <nav className='navBar'>
             <ul>
               <li> <Link to={`/`}>Home</Link> </li>
-              <li> <Link to={`/gallery`}>Gallery</Link> </li>
-              <li> <Link to={`/about`}>About</Link> </li>
               <li> <Link to={`/profile`}>Profile</Link> </li>
             </ul>
             <div>
@@ -137,8 +134,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="about" element={<About />} />
-          <Route path="gallery" element={<Gallery />} />
+          <Route path="/profile" element={<Profile />} />
+          <Route path="/change-password" element={<ChangePassword />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes>
         : null}
@@ -147,6 +144,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Login />} />
           <Route path="signup" element={<Signup />} />
+          <Route path="/forget-password" element={<ForgetPassword />} />
           <Route path="*" element={<Navigate to="/" replace={true} />} />
         </Routes> : null
       }
