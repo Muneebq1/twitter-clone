@@ -1,5 +1,5 @@
 {
-  "name": "crud-operation",
+  "name": "twitter-clone",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -10,14 +10,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Muneebq1/crud-operation.git"
+    "url": "git+https://github.com/Muneebq1/twitter-clone.git"
   },
   "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/Muneebq1/crud-operation/issues"
+    "url": "https://github.com/Muneebq1/twitter-clone/issues"
   },
-  "homepage": "https://github.com/Muneebq1/crud-operation#readme",
+  "homepage": "https://github.com/Muneebq1/twitter-clone#readme",
   "dependencies": {
     "bcrypt-inzi": "^1.0.7",
     "cookie-parser": "^1.4.6",
