@@ -4,6 +4,8 @@ import { GlobalContext } from './context/Context';
 import axios from 'axios'
 import { Routes, Route, Link, Navigate } from "react-router-dom";
 import loaderImg from './img/loading.webp'
+import profilePhoto from './img/profile.jpg';
+
 
 import Home from "./components/home";
 import Profile from "./components/profile";
@@ -114,20 +116,12 @@ function App() {
               <li> <Link to={`/`}>Home</Link> </li>
               <li> <Link to={`/profile`}>Profile</Link> </li>
             </ul>
-            <div>
-              {state?.user?.firstName} {state?.user?.lastName}  <button onClick={logoutHandler}>Logout</button>
+            <div className='user'>
+            <img className='img' src={profilePhoto} alt=""></img>
+              {state?.user?.firstName}{state?.user?.lastName} <button className='logout' onClick={logoutHandler}>Logout</button>
             </div>
           </nav>
           : null
-      }
-      {
-        (state.isLogin === false) ?
-          <nav className='navBar'>
-            <ul>
-              <li> <Link to={`/`}>Login</Link> </li>
-              <li> <Link to={`/signup`}>Signup</Link> </li>
-            </ul>
-          </nav> : null
       }
 
       {(state.isLogin === true) ?

@@ -1,8 +1,6 @@
 import { useState, useContext } from "react";
 import { GlobalContext } from '../context/Context';
-
-import { Button, TextField } from '@mui/material';
-import { Routes, Route, Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import './login.css'
 import axios from "axios";
@@ -46,49 +44,42 @@ function Login() {
 
     return (
         <>
-            <h4>This is Login page</h4>
-
-            <form onSubmit={loginHandler} className="loginForm">
-
-
-                <TextField
-                    className="TextField"
-                    id="email"
-                    label="Email"
-                    variant="outlined"
-                    type="email"
-                    name="username"
-                    placeholder="email"
-                    autoComplete="username"
-                    onChange={(e) => { setEmail(e.target.value) }}
-                />
-
-
-                <br />
-
-                <TextField
-                    className="TextField"
-                    id="password"
-                    label="Password"
-                    variant="outlined"
-                    type="password"
-                    name="current-password"
-                    autoComplete="current-password"
-                    placeholder="password"
-                    onChange={(e) => { setPassword(e.target.value) }}
-                />
-
-                <br />
-                <Button variant="outlined" type="submit">Login</Button>
-
-            </form>
-            <br />
-            <button>
-                <Link to={`/forget-password`}>Forget Password</Link>
-            </button>
-
-
-            <p>{result}</p>
+            <div className='main'>
+                <form onSubmit={loginHandler} className="form">
+                    <div className='left'></div>
+                    <div className='right'>
+                        <h1> Login to continue </h1>
+                        <input
+                            required
+                            className="input"
+                            id="email"
+                            label="Email"
+                            type="email"
+                            name="username"
+                            placeholder="email"
+                            autoComplete="username"
+                            onChange={(e) => { setEmail(e.target.value) }}
+                        />
+                        <br />
+                        <input
+                            required
+                            className=" input"
+                            id="password"
+                            label="Password"
+                            type="password"
+                            name="current-password"
+                            autoComplete="current-password"
+                            placeholder="password"
+                            onChange={(e) => { setPassword(e.target.value) }}
+                        />
+                        {(state.isLogin === false) ?
+                            <p className=''>dont have an account? <Link className="a" to={`/signup`}>Signup</Link>
+                                <Link className="forget" to={`/forget-password`}>Forget Password?</Link>
+                            </p> : null}
+                        <button className="button" type="submit">Login</button>
+                    </div>
+                </form>
+            </div>
         </>
     )
 }
