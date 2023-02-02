@@ -36,7 +36,7 @@ function App() {
         type: 'USER_LOGOUT'
       })
     } catch (error) {
-      console.log("axios error: ", error);
+      console.log("axios error:  ", error);
     }
 
   }
