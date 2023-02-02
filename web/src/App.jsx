@@ -3,7 +3,8 @@ import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from './context/Context';
 import axios from 'axios'
 import { Routes, Route, Link, Navigate } from "react-router-dom";
-import loaderImg from './img/loading.webp'
+// import loaderImg from './img/loading.webp'
+// import loaderImg from 'https://giphy.com/embed/wvtt4mtViPOSrLYNFh'
 import profilePhoto from './img/profile.jpg';
 
 
@@ -125,7 +126,6 @@ function App() {
       }
 
       {(state.isLogin === true) ?
-
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/profile" element={<Profile />} />
@@ -144,12 +144,7 @@ function App() {
       }
 
       {(state.isLogin === null) ?
-
-        <div style={{ display: "flex", justifyContent: "center", alignItems: "center", minHeight: '100vh' }}>
-          <img width={300} src={loaderImg} alt="" />
-        </div>
-
-        : null}
+        <div id='preloader'></div> : null}
 
     </div>
   );
