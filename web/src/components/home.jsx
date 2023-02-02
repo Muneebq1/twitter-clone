@@ -2,13 +2,13 @@ import { useFormik } from 'formik';
 import * as yup from 'yup';
 import axios from "axios";
 import { useEffect, useState, useContext } from 'react';
-import { GlobalContext } from './../context/Context';
+import { GlobalContext } from '../context/Context';
 import moment from 'moment';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faHome ,faMessage, faBell, faHashtag,faBookmark,faList,faUser,faCaretDown  } from '@fortawesome/free-solid-svg-icons';
+import { faHome ,faMessage, faBell, faHashtag,faBookmark,faList,faUser,faCaretDown,faSearch  } from '@fortawesome/free-solid-svg-icons';
 // import InfiniteScroll from 'react-infinite-scroller';
-import profilePhoto from './../img/profile.jpg';
-
+import profilePhoto from '../img/profile.jpg';
+import right from '../img/Screenshot_1.png'
 function Home() {
 
     let { state, dispatch } = useContext(GlobalContext);
@@ -110,12 +110,10 @@ function Home() {
                 })
         },
     });
-
-
     return (
         <div className='main'>
             <div className='home-left'>
-             <h2><FontAwesomeIcon className='icon' icon={faHome}/>Home</h2> 
+             <h2 className='home'><FontAwesomeIcon className='icon' icon={faHome}/>Home</h2> 
                 <h2><FontAwesomeIcon className='icon' icon={faHashtag}/> Explore</h2>
                 <h2><FontAwesomeIcon className='icon' icon={faBell}/> Notification</h2>
                 <h2><FontAwesomeIcon className='icon' icon={faMessage}/> Message</h2>
@@ -123,13 +121,13 @@ function Home() {
                 <h2><FontAwesomeIcon className='icon' icon={faList}/> Lists</h2>
                 <h2><FontAwesomeIcon className='icon' icon={faUser}/> Profiles</h2>
                 <h2><FontAwesomeIcon className='icon' icon={faCaretDown}/> More</h2>
+                <button>Tweet</button>
             </div>
 
             <div className='center'>
-                {/* <h1>Home</h1> */}
                 <div className='flex'>
-                    <h3 className='for'>For you </h3>
-                    <h3 className='fol'>Following </h3>
+                    <h4 className='for'>For you </h4>
+                    <h4 className='fol'>Following </h4>
 
                 </div>
                 <form onSubmit={myFormik.handleSubmit}>
@@ -139,8 +137,6 @@ function Home() {
                         placeholder="what's happening?"
                         value={myFormik.values.tweetText}
                         onChange={myFormik.handleChange}
-                        rows="4"
-                        cols="50"
                     ></textarea>
                     {
                         (myFormik.touched.tweetText && Boolean(myFormik.errors.tweetText)) ?
@@ -232,7 +228,14 @@ function Home() {
                 {/* </InfiniteScroll> */}
             </div>
 
-            <div className='home-right'></div>
+            <div className='home-right'>
+                <div className='search'>
+                <FontAwesomeIcon className='icon' icon={faSearch}/>
+                <input type="text" placeholder='Search Twitter?' />
+                </div>
+                <br />
+                <img src={right} alt="" srcset="" />
+            </div>
         </div>
     );
 }

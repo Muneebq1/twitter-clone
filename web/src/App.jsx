@@ -3,10 +3,8 @@ import { useEffect, useState, useContext } from "react";
 import { GlobalContext } from './context/Context';
 import axios from 'axios'
 import { Routes, Route, Link, Navigate } from "react-router-dom";
-// import loaderImg from './img/loading.webp'
-// import loaderImg from 'https://giphy.com/embed/wvtt4mtViPOSrLYNFh'
 import profilePhoto from './img/profile.jpg';
-
+import twitter from './img/twitter.png'
 
 import Home from "./components/home";
 import Profile from "./components/profile";
@@ -109,18 +107,24 @@ function App() {
 
   return (
     <div>
-
       {
         (state.isLogin === true) ?
-          <nav className='navBar'>
-            <ul>
-              <li> <Link to={`/`}>Home</Link> </li>
-              <li> <Link to={`/profile`}>Profile</Link> </li>
+          <nav className='navbar'>
+            <ul className='flex'>
+              <li className='twitter'>
+                <Link to={`/`}><img height={50} src={twitter} alt=""></img></Link>
+                <h2>Home</h2>
+              </li>
+              
+              <li className='user'>
+                <Link to={`/profile`}><img className='img' src={profilePhoto} alt=""></img></Link>
+                <div>
+                  {state?.user?.firstName}
+                  {state?.user?.lastName}
+                  <button className='logout' onClick={logoutHandler}>Logout</button>
+                </div>
+              </li>
             </ul>
-            <div className='user'>
-            <img className='img' src={profilePhoto} alt=""></img>
-              {state?.user?.firstName}{state?.user?.lastName} <button className='logout' onClick={logoutHandler}>Logout</button>
-            </div>
           </nav>
           : null
       }
