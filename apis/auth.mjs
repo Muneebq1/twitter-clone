@@ -1,9 +1,6 @@
 import express from 'express';
 import { userModel, otpModel } from './../dbRepo/models.mjs'
-import {
-    stringToHash,
-    varifyHash,
-} from "bcrypt-inzi"
+import { stringToHash,varifyHash} from "bcrypt-inzi"
 import jwt from 'jsonwebtoken';
 import { customAlphabet } from 'nanoid'
 import moment from 'moment';

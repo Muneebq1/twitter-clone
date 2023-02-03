@@ -67,11 +67,7 @@ app.use('/api/v1', (req, res, next) => {
         }
     });
 })
-app.use('/api/v1', tweetApi)
-
-
-
-
+app.use('/api/v1', tweetApi) 
 const getUser = async (req, res) => {
 
     let _id = "";

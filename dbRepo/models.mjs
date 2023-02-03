@@ -3,19 +3,7 @@ import mongoose from 'mongoose';
 let tweetSchema = new mongoose.Schema({
     text: { type: String, required: true },
     owner: { type: mongoose.ObjectId, ref: "Users", required: true },
-
-    // ownerName: String,
-    // profilePhoto: String,
-
     image: { type: String },
-    // likes: [{ type: mongoose.ObjectId }],
-    // comments: [{
-    //     user: { type: mongoose.ObjectId },
-    //     commentText: String
-    // }],
-    // impression: Number,
-    // views: Number,
-    // tags: [],
     isDeleted: { type: Boolean, default: false },
     createdOn: { type: Date, default: Date.now }
 });
@@ -27,9 +15,6 @@ const userSchema = new mongoose.Schema({
     email: { type: String, required: true },
     password: { type: String, required: true },
     isActive: { type: Boolean, default: true},
-    // following: [{ type: mongoose.ObjectId }, ref: "Users"],
-    // followers: [{ type: mongoose.ObjectId }, ref: "Users"],
-
     createdOn: { type: Date, default: Date.now },
 });
 export const userModel = mongoose.model('Users', userSchema);

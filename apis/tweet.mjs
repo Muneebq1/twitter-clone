@@ -159,14 +159,6 @@ router.delete('/tweet/:id', (req, res) => {
             })
         }
     });
-
-
-
-
-
-
-
-
 })
 
 router.put('/tweet/:id', async (req, res) => {
